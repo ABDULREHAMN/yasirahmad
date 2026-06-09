@@ -1628,7 +1628,7 @@ ${exportData.map((d) => `${d.Date} | Revenue: ${d.Revenue} | Impressions: ${d.Im
                   <RecentActivityRow
                     key={index}
                     date={item.date}
-                    domain="techblogi.com"
+                    domain="soulcnt.com"
                     impressions={item.impressions}
                     clicks={item.clicks}
                     ctr={item.ctr}
