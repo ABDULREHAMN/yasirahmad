@@ -81,46 +81,51 @@ export function DashboardContent({ onNavigate }: DashboardContentProps) {
 
   const availableBalance = 0
   const pendingBalance = 0
-  const thisMonthEarnings = 0.003
+  const thisMonthEarnings = 207.22
   const totalPayments = 0
-  const totalEarnings = 0.003
+  const totalEarnings = 6619.42
   const nextWithdrawalDate = ""
 
   const allReportData = [
-    { date: "Jan 13, 2026", impressions: 0, clicks: 0, revenue: 0, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jan 14, 2026", impressions: 0, clicks: 0, revenue: 0, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jan 15, 2026", impressions: 0, clicks: 0, revenue: 0, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jan 16, 2026", impressions: 10, clicks: 1, revenue: 0.003, ctr: "10.00%", ecpm: "3.00" },
+    { date: "Jun 1, 2026", impressions: 6182, clicks: 224, revenue: 19.99, ctr: "3.62%", ecpm: "56.22" },
+    { date: "Jun 2, 2026", impressions: 6225, clicks: 226, revenue: 20.21, ctr: "3.63%", ecpm: "57.84" },
+    { date: "Jun 3, 2026", impressions: 6278, clicks: 229, revenue: 20.38, ctr: "3.65%", ecpm: "59.16" },
+    { date: "Jun 4, 2026", impressions: 6324, clicks: 231, revenue: 20.57, ctr: "3.65%", ecpm: "60.82" },
+    { date: "Jun 5, 2026", impressions: 6379, clicks: 234, revenue: 20.79, ctr: "3.67%", ecpm: "62.18" },
+    { date: "Jun 6, 2026", impressions: 6428, clicks: 236, revenue: 21.03, ctr: "3.67%", ecpm: "63.75" },
+    { date: "Jun 7, 2026", impressions: 6486, clicks: 239, revenue: 21.26, ctr: "3.69%", ecpm: "65.21" },
+    { date: "Jun 8, 2026", impressions: 6527, clicks: 241, revenue: 21.54, ctr: "3.69%", ecpm: "66.38" },
+    { date: "Jun 9, 2026", impressions: 6564, clicks: 243, revenue: 21.98, ctr: "3.70%", ecpm: "67.43" },
   ]
 
   const recentActivityData = [
-    { date: "Jan 16, 2026", impressions: 10, clicks: 1, revenue: 0.003, ctr: "10.00%", ecpm: "3.00" },
-    { date: "Jan 15, 2026", impressions: 0, clicks: 0, revenue: 0, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jan 14, 2026", impressions: 0, clicks: 0, revenue: 0, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jan 13, 2026", impressions: 0, clicks: 0, revenue: 0, ctr: "0.00%", ecpm: "0.00" },
+    { date: "Jun 9, 2026", impressions: 6564, clicks: 243, revenue: 21.98, ctr: "3.70%", ecpm: "67.43" },
+    { date: "Jun 8, 2026", impressions: 6527, clicks: 241, revenue: 21.54, ctr: "3.69%", ecpm: "66.38" },
+    { date: "Jun 7, 2026", impressions: 6486, clicks: 239, revenue: 21.26, ctr: "3.69%", ecpm: "65.21" },
+    { date: "Jun 6, 2026", impressions: 6428, clicks: 236, revenue: 21.03, ctr: "3.67%", ecpm: "63.75" },
   ]
 
   const latestActivity = {
-    date: "Jan 16, 2026",
-    revenue: 0.003,
-    impressions: 10,
-    clicks: 1,
-    ctr: "10.00%",
-    ecpm: "3.00",
+    date: "Jun 9, 2026",
+    revenue: 21.98,
+    impressions: 6564,
+    clicks: 243,
+    ctr: "3.70%",
+    ecpm: "67.43",
   }
 
-  const todayRevenue = 0.003
-  const todayImpressions = 10
-  const todayClicks = 1
-  const todayCTR = "10.00"
-  const todayECPM = "3.00"
+  const todayRevenue = 21.98
+  const todayImpressions = 6564
+  const todayClicks = 243
+  const todayCTR = "3.70"
+  const todayECPM = "67.43"
 
   const hourlyData = []
 
   const todayTotals = {
-    impressions: 10,
-    clicks: 1,
-    revenue: 0.003,
+    impressions: 6564,
+    clicks: 243,
+    revenue: 21.98,
   }
 
   // This ensures all data aggregates to locked totals: $4,819.23 revenue, 32,687 clicks, 567,531 impressions
@@ -1194,17 +1199,17 @@ ${exportData.map((d) => `${d.Date} | Revenue: ${d.Revenue} | Impressions: ${d.Im
     <div className="p-6 space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
         <StatsCard title="TODAY" value={`$${todayTotals.revenue.toFixed(2)}`} />
-        <StatsCard title="THIS MONTH" value={`$${thisMonthEarnings.toFixed(3)}`} />
-        <StatsCard title="LAST MONTH" value="$0.00" />
+        <StatsCard title="THIS MONTH" value={`$${thisMonthEarnings.toFixed(2)}`} />
+        <StatsCard title="LAST MONTH" value="$1342.22" />
         <StatsCard
           title="THIS MONTH FORECAST"
-          value="$0.00"
+          value="$674.99"
           badge={{
-            text: "0%",
-            color: "bg-gray-500",
+            text: "43%",
+            color: "bg-green-500",
           }}
         />
-        <StatsCard title="LAST 6 MONTHS" value={`$${totalEarnings.toFixed(3)}`} />
+        <StatsCard title="LAST 6 MONTHS" value={`$${totalEarnings.toFixed(2)}`} />
       </div>
 
       {/* Action Buttons */}
@@ -1623,7 +1628,7 @@ ${exportData.map((d) => `${d.Date} | Revenue: ${d.Revenue} | Impressions: ${d.Im
                   <RecentActivityRow
                     key={index}
                     date={item.date}
-                    domain="techblogi.com"
+                    domain="soulcnt.com"
                     impressions={item.impressions}
                     clicks={item.clicks}
                     ctr={item.ctr}

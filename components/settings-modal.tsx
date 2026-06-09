@@ -22,7 +22,7 @@ export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   })
 
   const [contactInfo, setContactInfo] = useState({
-    email: "rohanjanean56@gmail.com",
+    email: "yasirahmad908y@gmail.com",
     phone: "+1 (555) 123-4567",
     backupEmail: "",
   })
