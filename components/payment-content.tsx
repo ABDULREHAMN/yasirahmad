@@ -69,8 +69,8 @@ export function PaymentContent({ onNavigate }: PaymentContentProps) {
     {
       id: "pm-1",
       type: "payoneer",
-      accountHolderName: "Abdul Rehman",
-      email: "abdul.rehman.soashraf@gmail.com",
+      accountHolderName: "Yasir Ali",
+      email: "yasirahmad908y@gmail.com",
       country: "Pakistan",
       currency: "USD",
       status: "Active",
@@ -97,50 +97,66 @@ export function PaymentContent({ onNavigate }: PaymentContentProps) {
   })
 
   useEffect(() => {
-    const checkPendingWithdrawals = () => {
-      const now = new Date()
-      const updatedHistory = withdrawalHistory.map((withdrawal) => {
-        if (withdrawal.status === "Pending" && withdrawal.method === "Payoneer") {
-          const withdrawalDate = new Date(withdrawal.date)
-          const daysPassed = Math.floor((now.getTime() - withdrawalDate.getTime()) / (1000 * 60 * 60 * 24))
+    // Initialize withdrawal history with data from the image
+    const initialWithdrawals: WithdrawalDetails[] = [
+      {
+        id: "wd-1",
+        date: "06 Jun 2026",
+        method: "USDT TRC20",
+        amount: 4105.11,
+        status: "Pending",
+        details: "Pending withdrawal",
+      },
+      {
+        id: "wd-2",
+        date: "30 Apr 2026",
+        method: "USDT TRC20",
+        amount: 3150.22,
+        status: "Cancelled",
+        details: "Cancelled withdrawal",
+      },
+      {
+        id: "wd-3",
+        date: "14 Apr 2026",
+        method: "Payoneer",
+        amount: 2150.11,
+        status: "Failed",
+        details: "Failed withdrawal",
+      },
+      {
+        id: "wd-4",
+        date: "29 Mar 2026",
+        method: "Payoneer",
+        amount: 1130.11,
+        status: "Completed",
+        details: "Completed withdrawal",
+      },
+      {
+        id: "wd-5",
+        date: "12 Mar 2026",
+        method: "Payoneer",
+        amount: 830.55,
+        status: "Completed",
+        details: "Completed withdrawal",
+      },
+      {
+        id: "wd-6",
+        date: "25 Feb 2026",
+        method: "Payoneer",
+        amount: 553.65,
+        status: "Completed",
+        details: "Completed withdrawal",
+      },
+    ]
+    setWithdrawalHistory(initialWithdrawals)
+  }, [])
 
-          if (daysPassed >= 8) {
-            // Auto-complete after 8 days
-            const completedDate = new Date(withdrawalDate)
-            completedDate.setDate(completedDate.getDate() + 8)
-
-            return {
-              ...withdrawal,
-              status: "Completed" as const,
-              completedDate: completedDate.toISOString().split("T")[0],
-            }
-          }
-        }
-        return withdrawal
-      })
-
-      // Check if any status changed
-      const hasChanges = updatedHistory.some((w, i) => w.status !== withdrawalHistory[i].status)
-      if (hasChanges) {
-        setWithdrawalHistory(updatedHistory)
-        // System notification (no UI change, just console log)
-        console.log("[v0] Your Payoneer withdrawal has been completed successfully.")
-      }
-    }
-
-    // Check on mount and every hour
-    checkPendingWithdrawals()
-    const interval = setInterval(checkPendingWithdrawals, 60 * 60 * 1000)
-
-    return () => clearInterval(interval)
-  }, [withdrawalHistory])
-
-  const availableBalance = 0
-  const pendingBalance = 0
-  const totalEarnings = 0
-  const totalPayments = 0
+  const availableBalance = 197.22
+  const pendingBalance = 4105.11
+  const totalEarnings = 2514.31
+  const totalPayments = 2514.31
   const thisMonthEarnings = 0
-  const nextWithdrawalDate = ""
+  const nextWithdrawalDate = "29 Jun 2026"
 
   const paymentEntries = []
 
