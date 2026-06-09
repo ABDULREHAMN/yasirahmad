@@ -15,7 +15,7 @@ export function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
   const { kycStatus, verificationDate, kycReference, fullName } = useKyc()
 
   const profileData = {
-    fullName: "Yasir Ali",
+    fullName: "Ali Ahmad",
     email: "yasirahmad908y@gmail.com",
     username: "yasirahmad456",
     company: "Tech Blogi",
