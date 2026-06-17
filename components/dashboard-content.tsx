@@ -101,36 +101,39 @@ export function DashboardContent({ onNavigate }: DashboardContentProps) {
     { date: "Jun 12, 2026", impressions: 6783, clicks: 237, revenue: 22.90, ctr: "3.49%", ecpm: "65.33" },
     { date: "Jun 13, 2026", impressions: 231, clicks: 9, revenue: 1.20, ctr: "3.90%", ecpm: "5.19" },
     { date: "Jun 14, 2026", impressions: 324, clicks: 11, revenue: 1.20, ctr: "3.40%", ecpm: "3.70" },
+    { date: "Jun 15, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
+    { date: "Jun 16, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
+    { date: "Jun 17, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
   ]
 
   const recentActivityData = [
+    { date: "Jun 17, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
+    { date: "Jun 16, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
+    { date: "Jun 15, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
     { date: "Jun 14, 2026", impressions: 324, clicks: 11, revenue: 1.20, ctr: "3.40%", ecpm: "3.70" },
-    { date: "Jun 13, 2026", impressions: 231, clicks: 9, revenue: 1.20, ctr: "3.90%", ecpm: "5.19" },
-    { date: "Jun 12, 2026", impressions: 6783, clicks: 237, revenue: 22.90, ctr: "3.49%", ecpm: "65.33" },
-    { date: "Jun 11, 2026", impressions: 6663, clicks: 223, revenue: 21.50, ctr: "3.35%", ecpm: "61.05" },
   ]
 
   const latestActivity = {
-    date: "Jun 14, 2026",
-    revenue: 1.20,
-    impressions: 324,
-    clicks: 11,
-    ctr: "3.40%",
-    ecpm: "3.70",
+    date: "Jun 17, 2026",
+    revenue: 0.00,
+    impressions: 0,
+    clicks: 0,
+    ctr: "0.00%",
+    ecpm: "0.00",
   }
 
-  const todayRevenue = 1.20
-  const todayImpressions = 324
-  const todayClicks = 11
-  const todayCTR = "3.40"
-  const todayECPM = "3.70"
+  const todayRevenue = 0.00
+  const todayImpressions = 0
+  const todayClicks = 0
+  const todayCTR = "0.00"
+  const todayECPM = "0.00"
 
   const hourlyData = []
 
   const todayTotals = {
-    impressions: 324,
-    clicks: 11,
-    revenue: 1.20,
+    impressions: 0,
+    clicks: 0,
+    revenue: 0.00,
   }
 
   // This ensures all data aggregates to locked totals: $4,819.23 revenue, 32,687 clicks, 567,531 impressions
