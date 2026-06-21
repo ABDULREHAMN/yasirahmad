@@ -104,17 +104,22 @@ export function DashboardContent({ onNavigate }: DashboardContentProps) {
     { date: "Jun 15, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
     { date: "Jun 16, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
     { date: "Jun 17, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
+    { date: "Jun 18, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
+    { date: "Jun 19, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
+    { date: "Jun 20, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
+    { date: "Jun 21, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
+    { date: "Jun 22, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
   ]
 
   const recentActivityData = [
-    { date: "Jun 17, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jun 16, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jun 15, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jun 14, 2026", impressions: 324, clicks: 11, revenue: 1.20, ctr: "3.40%", ecpm: "3.70" },
+    { date: "Jun 22, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
+    { date: "Jun 21, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
+    { date: "Jun 20, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
+    { date: "Jun 19, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
   ]
 
   const latestActivity = {
-    date: "Jun 17, 2026",
+    date: "Jun 22, 2026",
     revenue: 0.00,
     impressions: 0,
     clicks: 0,
@@ -135,6 +140,8 @@ export function DashboardContent({ onNavigate }: DashboardContentProps) {
     clicks: 0,
     revenue: 0.00,
   }
+
+  // Today is June 22, 2026 - all metrics are zero
 
   // This ensures all data aggregates to locked totals: $4,819.23 revenue, 32,687 clicks, 567,531 impressions
 
