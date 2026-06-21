@@ -1,7 +1,14 @@
 "use client"
 
 import React from "react"
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
+import {
+  fillDataWithMissingDates,
+  getLastNDays,
+  getTodayMetrics,
+  getTodayDateString,
+  type DailyMetric,
+} from "@/lib/auto-date-data"
 import {
   Eye,
   MousePointer,
@@ -86,7 +93,8 @@ export function DashboardContent({ onNavigate }: DashboardContentProps) {
   const totalEarnings = 6686.33
   const nextWithdrawalDate = ""
 
-  const allReportData = [
+  // Historical data - preserved unchanged
+  const historicalData: DailyMetric[] = [
     { date: "Jun 1, 2026", impressions: 6182, clicks: 224, revenue: 19.99, ctr: "3.62%", ecpm: "56.22" },
     { date: "Jun 2, 2026", impressions: 6225, clicks: 226, revenue: 20.21, ctr: "3.63%", ecpm: "57.84" },
     { date: "Jun 3, 2026", impressions: 6278, clicks: 229, revenue: 20.38, ctr: "3.65%", ecpm: "59.16" },
@@ -101,25 +109,26 @@ export function DashboardContent({ onNavigate }: DashboardContentProps) {
     { date: "Jun 12, 2026", impressions: 6783, clicks: 237, revenue: 22.90, ctr: "3.49%", ecpm: "65.33" },
     { date: "Jun 13, 2026", impressions: 231, clicks: 9, revenue: 1.20, ctr: "3.90%", ecpm: "5.19" },
     { date: "Jun 14, 2026", impressions: 324, clicks: 11, revenue: 1.20, ctr: "3.40%", ecpm: "3.70" },
-    { date: "Jun 15, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jun 16, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jun 17, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jun 18, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jun 19, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jun 20, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jun 21, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jun 22, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
   ]
 
-  const recentActivityData = [
-    { date: "Jun 22, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jun 21, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jun 20, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
-    { date: "Jun 19, 2026", impressions: 0, clicks: 0, revenue: 0.00, ctr: "0.00%", ecpm: "0.00" },
-  ]
+  // Auto-generate all dates with missing dates filled with zeros
+  const allReportData = useMemo(() => {
+    return fillDataWithMissingDates(historicalData)
+  }, [])
 
-  const latestActivity = {
-    date: "Jun 22, 2026",
+  // Get today's metrics automatically
+  const todayMetrics = useMemo(() => {
+    return getTodayMetrics(allReportData)
+  }, [allReportData])
+
+  // Get last 4 days for recent activity (reverse order - most recent first)
+  const recentActivityData = useMemo(() => {
+    return getLastNDays(allReportData, 4)
+  }, [allReportData])
+
+  // Latest activity is always today's data
+  const latestActivity = todayMetrics || {
+    date: getTodayDateString(),
     revenue: 0.00,
     impressions: 0,
     clicks: 0,
@@ -127,21 +136,19 @@ export function DashboardContent({ onNavigate }: DashboardContentProps) {
     ecpm: "0.00",
   }
 
-  const todayRevenue = 0.00
-  const todayImpressions = 0
-  const todayClicks = 0
-  const todayCTR = "0.00"
-  const todayECPM = "0.00"
+  const todayRevenue = todayMetrics?.revenue ?? 0.00
+  const todayImpressions = todayMetrics?.impressions ?? 0
+  const todayClicks = todayMetrics?.clicks ?? 0
+  const todayCTR = todayMetrics?.ctr ?? "0.00%"
+  const todayECPM = todayMetrics?.ecpm ?? "0.00"
 
   const hourlyData = []
 
   const todayTotals = {
-    impressions: 0,
-    clicks: 0,
-    revenue: 0.00,
+    impressions: todayImpressions,
+    clicks: todayClicks,
+    revenue: todayRevenue,
   }
-
-  // Today is June 22, 2026 - all metrics are zero
 
   // This ensures all data aggregates to locked totals: $4,819.23 revenue, 32,687 clicks, 567,531 impressions
 
